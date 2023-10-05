@@ -28,6 +28,7 @@
   <script>
     var urlList;
     var historyList = [];
+    var position = -1;
     //read url.txt and add into urlList OLD
     document.addEventListener('DOMContentLoaded', function () { //initialize by reading from the url.txt
       const url = 'urls.txt';
@@ -79,11 +80,12 @@
       var randomVideoId = generateRandomVideoID();
       player.loadVideoById(randomVideoId);
       historyList.push(randomVideoId);
-      location++;
+      position++;
     }
 
     function lastVideo() {
-      player.loadVideoById(historyList[location - 1]);
+      position--;
+      player.loadVideoById(historyList[position]);
     }
     //called to get a random video OLD
     function generateRandomVideoID() {
