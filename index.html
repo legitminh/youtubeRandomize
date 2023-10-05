@@ -20,8 +20,8 @@
 <body>
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
   <div id="player"></div>
-  <button onclick="startVideo()">Start</button>
-  <button id="startStop" onclick="pauseVideo()">Pause</button>
+  <!-- <button onclick="startVideo()">Start</button> -->
+  <button id="startStop" onclick="startStop()">start</button>
 
   <button onclick="lastVideo()">LastVideo</button>
   <button onclick="newVideo()">NewVideo</button>
@@ -110,6 +110,21 @@
     function startVideo() { //unpause the current video
       player.playVideo();
       var object = getElementsById("startStop");
+      // object.onclick
+
+    }
+    function startStop() { //unpause the current video
+      
+      var startStopButton = document.getElementById("startStop");
+      if ( startStopButton.textContent == "start"){
+        startStopButton.textContent = "stop";
+        player.playVideo();
+      }
+      else{
+        startStopButton.textContent = "start";        
+        player.stopVideo();
+      }
+      // document.getElementById("startStop").textContent = "stop";
       // object.onclick
 
     }
