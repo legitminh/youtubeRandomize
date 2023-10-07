@@ -77,10 +77,16 @@
     }
     //called whenever new video button clicked or desire to start new video 
     function newVideo() {
-      var randomVideoId = generateRandomVideoID();
-      player.loadVideoById(randomVideoId);
-      historyList.push(randomVideoId);
-      position++;
+      if (position < historyList.length-1){//if not the current song
+        position++;
+        player.loadVideoById(historyList[position]);
+      }
+      else{
+        var randomVideoId = generateRandomVideoID();
+        player.loadVideoById(randomVideoId);
+        historyList.push(randomVideoId);
+        position++;
+      }
     }
 
     function lastVideo() {
