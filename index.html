@@ -1,7 +1,6 @@
 <!--Second interation of the project, using youtube API}  -->
 <html>
 
-<<<<<<< HEAD
 <body>
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
   <div id="player"></div>
@@ -29,55 +28,6 @@
           .catch((error) => {
               console.error('Fetch error:', error);
           });
-=======
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    #player {
-      width: 100%;
-      height: max;
-    }
-
-    @media (max-width: 700px) and (min-width: 600px) {
-      body {
-        background-color: black;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-  <div id="player"></div>
-  <!-- <button onclick="startVideo()">Start</button> -->
-  <button id="startStop" onclick="startStop()">start</button>
-
-  <button onclick="lastVideo()">LastVideo</button>
-  <button onclick="newVideo()">NewVideo</button>
-  <script>
-    var urlList;
-    var historyList = [];
-    var position = -1;
-    //read url.txt and add into urlList OLD
-    document.addEventListener('DOMContentLoaded', function () { //initialize by reading from the url.txt
-      const url = 'urls.txt';
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.status}`);
-          }
-          return response.text();
-        })
-        .then(content => {
-          urlList = content.split('\n');
-          console.log(urlList[0].split(',')[0]); //get video id (first value in csv)
-
-          //playVideo(urlList);
-        })
-        .catch((error) => {
-          console.error('Fetch error:', error);
-        });
->>>>>>> origin/main
     });
 
 
@@ -107,40 +57,15 @@
     }
     //called whenever new video button clicked or desire to start new video 
     function newVideo() {
-<<<<<<< HEAD
       player.loadVideoById(generateRandomVideoID());
-=======
-      if (position < historyList.length-1){//if not the current song
-        position++;
-        player.loadVideoById(historyList[position]);
-      }
-      else{
-        var randomVideoId = generateRandomVideoID();
-        player.loadVideoById(randomVideoId);
-        historyList.push(randomVideoId);
-        position++;
-      }
-    }
-
-    function lastVideo() {
-      position--;
-      player.loadVideoById(historyList[position]);
->>>>>>> origin/main
     }
     //called to get a random video OLD
     function generateRandomVideoID() {
       var index = Math.floor(urlList.length * Math.random());
-<<<<<<< HEAD
-      var videoUrl = urlList[index].split(' ')[0];
+      var videoUrl = urlList[index].split(',')[0];
 
 
       var videoID = videoUrl.substring(videoUrl.length - 11);
-=======
-      var videoID = urlList[index].split(',')[0];
-
-
-      //var videoID = videoUrl.substring(videoUrl.length - 11);
->>>>>>> origin/main
       console.log(videoID);
       return videoID;
     }
@@ -156,27 +81,6 @@
     }
     function startVideo() { //unpause the current video
       player.playVideo();
-<<<<<<< HEAD
-=======
-      var object = getElementsById("startStop");
-      // object.onclick
-
-    }
-    function startStop() { //unpause the current video
-      
-      var startStopButton = document.getElementById("startStop");
-      if ( startStopButton.textContent == "start"){
-        startStopButton.textContent = "stop";
-        player.playVideo();
-      }
-      else{
-        startStopButton.textContent = "start";        
-        player.stopVideo();
-      }
-      // document.getElementById("startStop").textContent = "stop";
-      // object.onclick
-
->>>>>>> origin/main
     }
     // see playlist content
     async function readPlaylist() {
@@ -188,13 +92,8 @@
 
       await fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLP_Wb75xS9wDOChuGRBpuNSMIkrJ2FaeP&key=AIzaSyDTadHGdvVsI9YGG72CT60Qh23FYO51UIU"
         , {
-<<<<<<< HEAD
         method: "GET" // default, so we can ignore
       })
-=======
-          method: "GET" // default, so we can ignore
-        })
->>>>>>> origin/main
         .then(response => {
           console.log(response);
 
