@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 <!-- developing playlist fetching ability no need urls.txt anymore  -->
+>>>>>>> origin/main
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
   /**
@@ -6,34 +9,54 @@
    * See instructions for running APIs Explorer code samples locally:
    * https://developers.google.com/explorer-help/code-samples#javascript
    */
+<<<<<<< HEAD
+
+=======
   // asych function base for loadClient
+>>>>>>> origin/main
   function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/youtube.readonly"})
         .then(function() { console.log("Sign-in successful"); },
               function(err) { console.error("Error signing in", err); });
   }
+<<<<<<< HEAD
+  function loadClient() {
+    gapi.client.setApiKey("YOUR_API_KEY");
+=======
   //
   function loadClient() {
     gapi.client.setApiKey("AIzaSyDTadHGdvVsI9YGG72CT60Qh23FYO51UIU");
+>>>>>>> origin/main
     return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
+<<<<<<< HEAD
+=======
     
+>>>>>>> origin/main
     return gapi.client.youtube.playlistItems.list({
       "part": [
         "snippet,contentDetails"
       ],
       "maxResults": 10000,
+<<<<<<< HEAD
+      "pageToken": "EAAaKVBUOkNHUWlFRFpETVRNek1EQXpORFF3T0VVek5UY29BVEQ1N3B1b0Jn",
+=======
       "pageToken":"EAAaKVBUOkNHUWlFRFpETVRNek1EQXpORFF3T0VVek5UY29BVEQ1N3B1b0Jn",
+>>>>>>> origin/main
       "playlistId": "PLP_Wb75xS9wDOChuGRBpuNSMIkrJ2FaeP"
     })
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
+<<<<<<< HEAD
+                console.log("Response", response);
+=======
                 console.log("Response",response.results.nextPageToken,response.result.items);
+>>>>>>> origin/main
               },
               function(err) { console.error("Execute error", err); });
   }
@@ -41,6 +64,9 @@
     gapi.auth2.init({client_id: "YOUR_CLIENT_ID"});
   });
 </script>
+<<<<<<< HEAD
+=======
 <div id="Code"></div>
+>>>>>>> origin/main
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
 <button onclick="execute()">execute</button>
